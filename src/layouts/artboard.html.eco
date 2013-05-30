@@ -1,0 +1,11 @@
+---
+layout: 'default'
+---
+<header class="artboard-header">
+  <div class="in">
+    <div class="unit6">
+      <h1 class="title"><%= @document.title %></h1>
+    </div>
+  </div>
+</header>
+<%- @content %>

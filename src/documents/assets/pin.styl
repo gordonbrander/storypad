@@ -1,0 +1,26 @@
+/* Absolute positioning helpers
+------------------------------------------------------------------------------
+
+Pin text to the corner of a slide (or anywhere, really). Best used inside of .in:
+
+    .slide > .in > .pin-tr.unit6
+*/
+.pin-tl
+  left 0
+  position absolute
+  top 0
+
+.pin-tr
+  position absolute
+  right 0
+  top 0
+
+.pin-bl
+  bottom 0
+  left 0
+  position absolute
+
+.pin-br
+  bottom 0
+  position absolute
+  right 0

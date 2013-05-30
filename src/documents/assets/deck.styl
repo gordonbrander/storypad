@@ -1,0 +1,33 @@
+.slide
+  /* A default splash of color */
+  background #e5e5e5 center center no-repeat
+  /* Any background image on slide should cover it by default. */
+  background-size cover
+  /* Add 2px of padding to top and bottom in order to contain margins of
+  `.slide > in`. */
+  padding 2px 0
+  z-index 100
+
+.slide:nth-child(even)
+  /* Alternate colors by default. */
+  background-color #fff
+
+.slide > .in
+  /* We're approximating a 1280x720 slide. We want the slide to be 720px high at
+  minimum. Take into account some top and bottom whitespace, plus the 2px padding
+  on `.slide`. */
+  min-height (720px - (48px - 2px) - (36px - 2px))
+  margin (48px - 2px) auto (36px - 2px)  
+  position relative
+
+.slide .header
+  margin-bottom 12px
+
+.slide .content
+  margin-bottom: 12px
+
+.pullquote
+  font-size 24px
+  line-height 32px
+  margin-bottom 12px
+

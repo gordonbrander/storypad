@@ -1,0 +1,10 @@
+---
+layout: 'artboard'
+---
+<div class="artboard-main">
+  <div class="in">
+    <div class="unit6"> 
+      <%- @content %>
+    </div>
+  </div>
+</div>

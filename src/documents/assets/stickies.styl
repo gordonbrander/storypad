@@ -1,0 +1,36 @@
+/* Stickies
+------------------------------------------------------------------------------ */
+
+.sticky
+  background #ffff55
+  color #000
+  border-radius 3px
+  box-shadow 1px 1px 3px rgba(0, 0, 0, .3)
+  font-size 18px
+  min-height 200px
+  position absolute
+  padding 12px 20px 24px
+  width 260px
+
+.sticky:nth-child(2n+2) {
+  transform: rotate(3deg);
+}
+
+.sticky:nth-child(2n+5) {
+  transform: rotate(-2deg);
+}
+
+.sticky.pink
+  background #f75271
+
+.sticky.green
+  background #a5e056
+
+.sticky.blue
+  background #52d7ec
+
+.sticky:hover
+  z-index 2
+
+.sticky > .content
+  margin-bottom 12px
