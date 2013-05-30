@@ -3,8 +3,15 @@ layout: 'artboard'
 ---
 <div class="artboard-main">
   <div class="in">
-    <div class="unit6"> 
-      <%- @content %>
-    </div>
+    <article class="article">
+      <% if @document.images: %>
+        <% for url in document.images: %>
+          <img src="<%= url %>" />
+        <% end %>
+      <% end %>
+      <div class="content unit6">
+        <%- @content %>
+      </div>
+    </article>
   </div>
 </div>
