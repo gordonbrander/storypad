@@ -1,0 +1,1 @@
+Just a quick Docpad theme for future themes work.
