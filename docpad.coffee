@@ -40,7 +40,7 @@ compareByFilename = (a, b) ->
   """See https://github.com/bevry/docpad/blob/master/src/lib/models/file.coffee
   < and > can be used for alphanumeric sorting strings in JavaScript?!?!
   """
-  if a.filename < b.filename then 1 else if a.filename > b.filename then -1 else 0
+  if a.filename > b.filename then 1 else if a.filename < b.filename then -1 else 0
 
 compareByDate = (a, b) ->
   timestampA = new Date(a.date).valueOf()
