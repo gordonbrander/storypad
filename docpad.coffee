@@ -3,7 +3,7 @@
 ENVIRONMENT = 'local';
 
 if ENVIRONMENT == 'production'
-  url = ''
+  url = 'http://people.mozilla.com/~gbrander/2013-06-future-themes'
 else
   url = ''
 
