@@ -15,10 +15,10 @@ layout: 'default'
     <% if nextDocument or prevDocument: %>
       <div class="artboard-pagination">
         <% if prevDocument: %>
-          <a class="prev" href="<%= @prependBasePath(prevDocument.url) %>">Prev</a>
+          <a class="prev" rel="prev" href="<%= @prependBasePath(prevDocument.url) %>">Prev</a>
         <% end %>
         <% if nextDocument: %>
-          <a class="next" href="<%= @prependBasePath(nextDocument.url) %>">Next</a>
+          <a class="next" rel="next" href="<%= @prependBasePath(nextDocument.url) %>">Next</a>
         <% end %>
       </div>
     <% end %>
