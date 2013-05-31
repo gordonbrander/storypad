@@ -1,11 +1,16 @@
+path = require('path')
+
 # The DocPad Configuration File
 # It is simply a CoffeeScript Object which is parsed by CSON
 ENVIRONMENT = 'local';
 
 if ENVIRONMENT == 'production'
-  url = 'http://people.mozilla.com/~gbrander/2013-06-future-themes'
+  baseUrl = 'http://people.mozilla.com/~gbrander/2013-06-future-themes'
 else
-  url = ''
+  baseUrl = ''
+
+prependBaseUrl = (fragment) ->
+  return path.join(baseUrl, fragment)
 
 asArray = (thing) ->
   """Box `thing` as an array unless already an array"""
@@ -76,7 +81,7 @@ docpadConfig = {
     # Specify some site properties
     site:
       # The production url of our website
-      url: url
+      url: baseUrl
 
       # Here are some old site urls that you would like to redirect from
       oldUrls: [
@@ -96,8 +101,8 @@ docpadConfig = {
 
       # The website's styles
       styles: [
-        url + '/vendor/normalize.css'
-        url + '/assets/basic.css'
+        prependBaseUrl('/vendor/normalize.css')
+        prependBaseUrl('/assets/basic.css')
       ]
 
       # The website's scripts
@@ -129,6 +134,7 @@ docpadConfig = {
       # Merge the document keywords with the site keywords
       @site.keywords.concat(@document.keywords or []).join(', ')
 
+    prependBaseUrl: prependBaseUrl
     compareByDate: compareByDate
     compareByFilename: compareByFilename
     searcher: searcher

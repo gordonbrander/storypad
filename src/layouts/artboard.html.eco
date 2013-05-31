@@ -5,7 +5,7 @@ layout: 'default'
   <div class="in">
     <div class="unit6">
       <h1 class="title">
-        <a href="<%= @site.url or '/' %>"><%= @site.title %></a>
+        <a href="<%= @prependBaseUrl('/') %>"><%= @site.title %></a>
         &rsaquo; <%= @document.title %>
       </h1>
     </div>
@@ -15,10 +15,10 @@ layout: 'default'
     <% if nextDocument or prevDocument: %>
       <div class="artboard-pagination">
         <% if prevDocument: %>
-          <a class="prev" href="<%= prevDocument.url %>">Prev</a>
+          <a class="prev" href="<%= @prependBaseUrl(prevDocument.url) %>">Prev</a>
         <% end %>
         <% if nextDocument: %>
-          <a class="next" href="<%= nextDocument.url %>">Next</a>
+          <a class="next" href="<%= @prependBaseUrl(nextDocument.url) %>">Next</a>
         <% end %>
       </div>
     <% end %>
