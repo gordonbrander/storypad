@@ -1,17 +1,15 @@
 ---
 layout: 'artboard'
 ---
-<div class="artboard-main">
-  <div class="in">
-    <article class="article">
-      <% if @document.images: %>
-        <% for url in document.images: %>
-          <img src="<%= url %>" />
-        <% end %>
+<div class="in">
+  <article class="article">
+    <% if @document.images: %>
+      <% for url in document.images: %>
+        <img src="<%= url %>" />
       <% end %>
-      <div class="content unit6">
-        <%- @content %>
-      </div>
-    </article>
-  </div>
+    <% end %>
+    <div class="content unit6">
+      <%- @content %>
+    </div>
+  </article>
 </div>
