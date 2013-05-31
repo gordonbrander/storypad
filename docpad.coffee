@@ -1,16 +1,14 @@
-path = require('path')
-
 # The DocPad Configuration File
 # It is simply a CoffeeScript Object which is parsed by CSON
-ENVIRONMENT = 'local';
 
-if ENVIRONMENT == 'production'
-  basePath = '/~gbrander/2013-06-future-themes'
-else
-  basePath = ''
+path = require('path')
+
+productionBasePath = "/~gbrander/2013-06-future-themes";
+localBasePath = '';
 
 prependBasePath = (fragment) ->
-  return path.join(basePath, fragment)
+  """Method eventually attached to templateData object."""
+  return path.join(@site.url, fragment)
 
 asArray = (thing) ->
   """Box `thing` as an array unless already an array"""
@@ -81,7 +79,7 @@ docpadConfig = {
     # Specify some site properties
     site:
       # The production url of our website
-      url: basePath
+      url: localBasePath
 
       # Here are some old site urls that you would like to redirect from
       oldUrls: [
@@ -101,8 +99,8 @@ docpadConfig = {
 
       # The website's styles
       styles: [
-        prependBasePath('/vendor/normalize.css')
-        prependBasePath('/assets/basic.css')
+        localBasePath + '/vendor/normalize.css'
+        localBasePath + '/assets/basic.css'
       ]
 
       # The website's scripts
@@ -170,8 +168,17 @@ docpadConfig = {
           res.redirect(newUrl+req.url, 301)
         else
           next()
+
+  environments:
+    production:
+      templateData:
+        site:
+          url: "/~gbrander/2013-06-future-themes"
+          styles: [
+            productionBasePath + '/vendor/normalize.css'
+            productionBasePath + '/assets/basic.css'
+          ]
 }
 
 # Export our DocPad Configuration
 module.exports = docpadConfig
-
