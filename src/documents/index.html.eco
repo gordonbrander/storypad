@@ -5,7 +5,7 @@ layout: 'default'
 <div class="in">
   <div class="unit6">
     <ul>
-    <% for document in @getCollection('html').toJSON().filter(@negatedSearcher('url', 'index.html')).sort(@compareByFilename): %>
+    <% for document in @getHtmlJsonSortedByFilename(): %>
       <li><a href="<%= document.url %>"><%= document.title %></a></li>
     <% end %>
     </ul>

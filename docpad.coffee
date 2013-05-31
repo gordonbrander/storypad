@@ -47,17 +47,22 @@ compareByDate = (a, b) ->
   timestampB = new Date(b.date).valueOf()
   if timestampA < timestampB then 1 else if timestampA > timestampB then -1 else 0
 
-getDocuments = (filterBy, sortBy) ->
-  # Get all documents from the posts directory
-  documents = @getCollection('documents').toJSON().filter(filterBy).sort(sortBy)
+getById = (array, id) ->
+  array.filter((object) -> object.id == id).pop()
 
-getAdjacentDocument = (id, offset = 1) ->
-  """For a given docpad document, get the adjacent document"""
-  documents = 
-  model = documents.get(id)
-  startIndex = documents.indexOf(model)
+getAdjacent = (array, thing, offset = 1) ->
+  startIndex = array.indexOf(thing)
   offsetIndex = startIndex + offset
-  adjacent = documents.at(offsetIndex)
+  adjacent = array[offsetIndex]
+  if adjacent then adjacent else null
+
+getAdjacentById = (array, id, offset = 1) ->
+  object = getById(array, id)
+  getAdjacent(array, object, offset)
+
+getHtmlJsonSortedByFilename = () ->
+  isntIndex = negatedSearcher('url', 'index.html')
+  @getCollection('html').toJSON().filter(isntIndex).sort(compareByFilename)
 
 docpadConfig = {
 
@@ -129,6 +134,8 @@ docpadConfig = {
     searcher: searcher
     negatedSearcher: negatedSearcher
     replaceAll: replaceAll
+    getHtmlJsonSortedByFilename: getHtmlJsonSortedByFilename
+    getAdjacentById: getAdjacentById
 
   # =================================
   # DocPad Events

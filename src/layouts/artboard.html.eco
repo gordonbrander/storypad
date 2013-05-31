@@ -9,3 +9,15 @@ layout: 'default'
   </div>
 </header>
 <%- @content %>
+<div class="pagination">
+  <% documents = @getHtmlJsonSortedByFilename() %>
+  <% nextDocument = @getAdjacentById(documents, @document.id, 1) %>
+  <% prevDocument = @getAdjacentById(documents, @document.id, -1) %>
+  <% if nextDocument: %>
+    <a href="<%= nextDocument.url %>">Next</a>
+  <% end %>
+
+  <% if prevDocument: %>
+    <a href="<%= prevDocument.url %>">Prev</a>
+  <% end %>
+</div>
