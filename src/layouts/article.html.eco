@@ -1,15 +1,17 @@
 ---
 layout: 'artboard'
 ---
-<div class="in">
-  <article class="article">
-    <% if @document.images: %>
-      <% for url in document.images: %>
-        <img src="<%= @prependBasePath(url) %>" />
+<div class="artboard-main">
+  <div class="in">
+    <article class="article">
+      <% if @document.images: %>
+        <% for url in document.images: %>
+          <img src="<%= @prependBasePath(url) %>" />
+        <% end %>
       <% end %>
-    <% end %>
-    <div class="content unit6">
-      <%- @content %>
-    </div>
-  </article>
+      <div class="content unit6">
+        <%- @content %>
+      </div>
+    </article>
+  </div>
 </div>

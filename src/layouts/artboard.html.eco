@@ -24,6 +24,4 @@ layout: 'default'
     <% end %>
   </div>
 </header>
-<div class="artboard-main">
-  <%- @content %>
-</div>
+<%- @content %>
