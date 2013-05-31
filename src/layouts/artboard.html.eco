@@ -6,17 +6,19 @@ layout: 'default'
     <div class="unit6">
       <h1 class="title"><%= @document.title %></h1>
     </div>
-    <div class="artboard-pagination">
-      <% documents = @getHtmlJsonSortedByFilename() %>
-      <% nextDocument = @getAdjacentById(documents, @document.id, 1) %>
-      <% prevDocument = @getAdjacentById(documents, @document.id, -1) %>
-      <% if prevDocument: %>
-        <a class="prev" href="<%= prevDocument.url %>">Prev</a>
-      <% end %>
-      <% if nextDocument: %>
-        <a class="next" href="<%= nextDocument.url %>">Next</a>
-      <% end %>
-    </div>
+    <% documents = @getHtmlJsonSortedByFilename() %>
+    <% nextDocument = @getAdjacentById(documents, @document.id, 1) %>
+    <% prevDocument = @getAdjacentById(documents, @document.id, -1) %>
+    <% if nextDocument or prevDocument: %>
+      <div class="artboard-pagination">
+        <% if prevDocument: %>
+          <a class="prev" href="<%= prevDocument.url %>">Prev</a>
+        <% end %>
+        <% if nextDocument: %>
+          <a class="next" href="<%= nextDocument.url %>">Next</a>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </header>
 <div class="artboard-main">
