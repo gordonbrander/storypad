@@ -4,7 +4,10 @@ layout: 'default'
 <header class="artboard-header">
   <div class="in">
     <div class="unit6">
-      <h1 class="title"><%= @document.title %></h1>
+      <h1 class="title">
+        <a href="<%= @site.url or '/' %>"><%= @site.title %></a>
+        &rsaquo; <%= @document.title %>
+      </h1>
     </div>
     <% documents = @getHtmlJsonSortedByFilename() %>
     <% nextDocument = @getAdjacentById(documents, @document.id, 1) %>
