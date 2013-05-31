@@ -5,7 +5,7 @@ layout: 'artboard'
   <article class="article">
     <% if @document.images: %>
       <% for url in document.images: %>
-        <img src="<%= @prependBaseUrl(url) %>" />
+        <img src="<%= @prependBasePath(url) %>" />
       <% end %>
     <% end %>
     <div class="content unit6">

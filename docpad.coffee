@@ -5,12 +5,12 @@ path = require('path')
 ENVIRONMENT = 'local';
 
 if ENVIRONMENT == 'production'
-  baseUrl = 'http://people.mozilla.com/~gbrander/2013-06-future-themes'
+  basePath = '/~gbrander/2013-06-future-themes'
 else
-  baseUrl = ''
+  basePath = ''
 
-prependBaseUrl = (fragment) ->
-  return path.join(baseUrl, fragment)
+prependBasePath = (fragment) ->
+  return path.join(basePath, fragment)
 
 asArray = (thing) ->
   """Box `thing` as an array unless already an array"""
@@ -81,7 +81,7 @@ docpadConfig = {
     # Specify some site properties
     site:
       # The production url of our website
-      url: baseUrl
+      url: basePath
 
       # Here are some old site urls that you would like to redirect from
       oldUrls: [
@@ -101,8 +101,8 @@ docpadConfig = {
 
       # The website's styles
       styles: [
-        prependBaseUrl('/vendor/normalize.css')
-        prependBaseUrl('/assets/basic.css')
+        prependBasePath('/vendor/normalize.css')
+        prependBasePath('/assets/basic.css')
       ]
 
       # The website's scripts
@@ -134,7 +134,7 @@ docpadConfig = {
       # Merge the document keywords with the site keywords
       @site.keywords.concat(@document.keywords or []).join(', ')
 
-    prependBaseUrl: prependBaseUrl
+    prependBasePath: prependBasePath
     compareByDate: compareByDate
     compareByFilename: compareByFilename
     searcher: searcher
