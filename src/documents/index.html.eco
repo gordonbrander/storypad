@@ -2,12 +2,15 @@
 title: 'Future themes'
 layout: 'default'
 ---
-<div class="in">
-  <div class="unit6">
-    <ul>
-    <% for document in @getHtmlJsonSortedByFilename(): %>
-      <li><a href="<%= document.url %>"><%= document.title %></a></li>
-    <% end %>
-    </ul>
+<div class="artboard-main">
+  <div class="in">
+    <div class="unit6">
+      <h1><%= @site.title %></h1>
+      <ul>
+      <% for document in @getHtmlJsonSortedByFilename(): %>
+        <li><a href="<%= document.url %>"><%= document.title %></a></li>
+      <% end %>
+      </ul>
+    </div>
   </div>
 </div>
