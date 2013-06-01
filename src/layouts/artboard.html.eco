@@ -1,27 +1,53 @@
----
-layout: 'default'
----
-<header class="artboard-header">
-  <div class="in">
-    <div class="unit6">
-      <h1 class="title">
-        <a href="<%= @prependBasePath('/') %>"><%= @site.title %></a>
-        &rsaquo; <%= @document.title %>
-      </h1>
-    </div>
-    <% documents = @getHtmlJsonSortedByFilename() %>
-    <% nextDocument = @getAdjacentById(documents, @document.id, 1) %>
-    <% prevDocument = @getAdjacentById(documents, @document.id, -1) %>
-    <% if nextDocument or prevDocument: %>
-      <div class="artboard-pagination">
-        <% if prevDocument: %>
-          <a class="prev" rel="prev" href="<%= @prependBasePath(prevDocument.url) %>">Prev</a>
-        <% end %>
-        <% if nextDocument: %>
-          <a class="next" rel="next" href="<%= @prependBasePath(nextDocument.url) %>">Next</a>
-        <% end %>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+<% documents = @getHtmlJsonSortedByFilename() %>
+<% nextDocument = @getAdjacentById(documents, @document.id, 1) %>
+<% prevDocument = @getAdjacentById(documents, @document.id, -1) %>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width" />
+
+  <title><%= @getPreparedTitle() %></title>
+  <meta name="description" content="<%= @getPreparedDescription() %>" />
+  <meta name="keywords" content="<%= @getPreparedKeywords() %>" />
+
+  <%- @getBlock('meta').toHTML() %>
+
+  <!-- See https://developer.mozilla.org/en-US/docs/Link_prefetching_FAQ -->
+  <% if nextDocument: %>
+    <link rel="prefetch" href="<%= @prependBasePath(nextDocument.url) %>">
+  <% end %>
+
+  <%- @getBlock('styles').add(@site.styles).add(@replaceAll(@document.styles, [['@site.url', @site.url]])).toHTML() %>
+</head>
+<body>
+  <header class="artboard-header">
+    <div class="in">
+      <div class="unit6">
+        <h1 class="title">
+          <a href="<%= @prependBasePath('/') %>"><%= @site.title %></a>
+          &rsaquo; <%= @document.title %>
+        </h1>
       </div>
-    <% end %>
-  </div>
-</header>
-<%- @content %>
+      <% if nextDocument or prevDocument: %>
+        <div class="artboard-pagination">
+          <% if prevDocument: %>
+            <a class="prev" href="<%= @prependBasePath(prevDocument.url) %>">Prev</a>
+          <% end %>
+          <% if nextDocument: %>
+            <a class="next" href="<%= @prependBasePath(nextDocument.url) %>">Next</a>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </header>
+  <%- @content %>
+  <%- @getBlock('scripts').add(@site.scripts).add(@replaceAll(@document.scripts, [['@site.url', @site.url]])).toHTML() %>
+</body>
+</html>
