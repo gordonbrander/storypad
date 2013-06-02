@@ -48,13 +48,19 @@
     </div>
   </header>
   <%- @content %>
-  <nav class="artboard-navigation">
+  <% allDocuments = @getHtmlJsonSortedByFilename() %>
+  <% offset = ((allDocuments.length * 25) + (49 * 2)) / 2 %>
+  <nav class="artboard-nav" style="margin-left: -<%= offset %>px">
     <ul class="artboard-paging">
     <% if prevDocument: %>
       <li><a class="prev" href="<%= @prependBasePath(prevDocument.url) %>">Prev</a></li>
     <% end %>
-    <% for document in @getHtmlJsonSortedByFilename(): %>
-      <li><a href="<%= @prependBasePath(document.url) %>"><span><%= document.title %></span></a></li>
+    <% for document in allDocuments: %>
+      <% if (@document.id == document.id): %>
+        <li><a class="page activated" href="<%= @prependBasePath(document.url) %>"><span><%= document.title %></span></a></li>
+      <% else: %>
+        <li><a class="page" href="<%= @prependBasePath(document.url) %>"><span><%= document.title %></span></a></li>      
+      <% end %>
     <% end %>
     <% if nextDocument: %>
       <li><a class="next" href="<%= @prependBasePath(nextDocument.url) %>">Next</a></li>

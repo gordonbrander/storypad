@@ -17,31 +17,61 @@
 .artboard-main
   padding 48px 0
 
-.artboard-pagination
-  background #444
+.artboard-nav
+  bottom 24px
+  left 50%
+  padding-top 36px
+  position fixed
+
+.artboard-paging
+  background #2e3641
   border-radius 5px
   height 48px
+  list-style none
+  margin 0
   overflow hidden
+  padding 0
+
+.artboard-paging > li
+  float left
+
+.artboard-paging > li > .page
+  border-right 1px solid #444
+  display block
+  height 48px
+  width 24px
+
+.artboard-paging > li > .page:hover
+.artboard-paging > li > .page.activated
+  background: #f97e76
+
+.artboard-paging > li > .page span
+  color #222
+  display none
+  font-weight bold
+  left 0
   position absolute
-  width 96px
-  top 12px
+  text-align center
+  top 0
   right 0
 
-.artboard-pagination > .next,
-.artboard-pagination > .prev
+.artboard-paging > li > .page:hover span
+  display block
+
+.artboard-paging > li > .next,
+.artboard-paging > li > .prev
   display block
   width 48px
   height 48px
-  position absolute
   text-indent -32000px
 
-.artboard-pagination > .next
+.artboard-paging > li > .next
   background url(sprite-y.png) 0 0 no-repeat
-  right 0
 
-.artboard-pagination > .prev
+.artboard-paging > li > .prev
   background url(sprite-y.png) 0 -100px no-repeat
+  border-right 1px solid #444
 
-.artboard-pagination > .next:hover,
-.artboard-pagination > .prev:hover
-  background-color #666
+.artboard-paging > li > .next:hover,
+.artboard-paging > li > .prev:hover
+  background-color #f97e76
