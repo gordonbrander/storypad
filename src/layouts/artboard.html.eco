@@ -48,6 +48,19 @@
     </div>
   </header>
   <%- @content %>
+  <nav class="artboard-navigation">
+    <ul class="artboard-paging">
+    <% if prevDocument: %>
+      <li><a class="prev" href="<%= @prependBasePath(prevDocument.url) %>">Prev</a></li>
+    <% end %>
+    <% for document in @getHtmlJsonSortedByFilename(): %>
+      <li><a href="<%= @prependBasePath(document.url) %>"><span><%= document.title %></span></a></li>
+    <% end %>
+    <% if nextDocument: %>
+      <li><a class="next" href="<%= @prependBasePath(nextDocument.url) %>">Next</a></li>
+    <% end %>
+  </ul>
+  </nav>
   <%- @getBlock('scripts').add(@site.scripts).add(@replaceAll(@document.scripts, [['@site.url', @site.url]])).toHTML() %>
 </body>
 </html>
