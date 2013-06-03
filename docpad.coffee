@@ -10,6 +10,11 @@ prependBasePath = (fragment) ->
   """Method eventually attached to templateData object."""
   return path.join(@site.url, fragment)
 
+makeMapPrepend = (prestring) ->
+  """Create a prepending mapper function"""
+  (string) ->
+    prestring + string
+
 asArray = (thing) ->
   """Box `thing` as an array unless already an array"""
   if (thing instanceof Array) then thing else if thing? then [thing] else []
@@ -72,6 +77,15 @@ classname = (classnamestrings...) ->
     accumulated = if typeof classname is 'string' then accumulated.concat(classname.trim().split(' ')) else accumulated
   classnamestrings.reduce(classesReducer, []).join(' ')
 
+STYLES = [
+  '/vendor/normalize.css'
+  '/assets/basic.css'
+]
+
+SCRIPTS = [
+  '/assets/artboard.js'
+]
+
 docpadConfig = {
 
   # =================================
@@ -103,15 +117,10 @@ docpadConfig = {
         """
 
       # The website's styles
-      styles: [
-        localBasePath + '/vendor/normalize.css'
-        localBasePath + '/assets/basic.css'
-      ]
+      styles: STYLES.map(makeMapPrepend(localBasePath))
 
       # The website's scripts
-      scripts: [
-        localBasePath + '/assets/artboard.js'
-      ]
+      scripts: SCRIPTS.map(makeMapPrepend(localBasePath))
 
 
     # -----------------------------
@@ -181,10 +190,8 @@ docpadConfig = {
       templateData:
         site:
           url: "/~gbrander/2013-06-future-themes"
-          styles: [
-            productionBasePath + '/vendor/normalize.css'
-            productionBasePath + '/assets/basic.css'
-          ]
+          styles: STYLES.map(makeMapPrepend(productionBasePath))
+          scripts: SCRIPTS.map(makeMapPrepend(productionBasePath))
 }
 
 # Export our DocPad Configuration
