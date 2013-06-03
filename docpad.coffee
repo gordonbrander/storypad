@@ -67,6 +67,11 @@ getHtmlJsonSortedByFilename = () ->
   isntIndex = negatedSearcher('url', 'index.html')
   @getCollection('html').toJSON().filter(isntIndex).sort(compareByFilename)
 
+classname = (classnamestrings...) ->
+  classesReducer = (accumulated, classname) ->
+    accumulated = if typeof classname is 'string' then accumulated.concat(classname.trim().split(' ')) else accumulated
+  classnamestrings.reduce(classesReducer, []).join(' ')
+
 docpadConfig = {
 
   # =================================
@@ -140,7 +145,8 @@ docpadConfig = {
     negatedSearcher: negatedSearcher
     replaceAll: replaceAll
     getHtmlJsonSortedByFilename: getHtmlJsonSortedByFilename
-    getAdjacentById: getAdjacentById
+    getAdjacentById: getAdjacentById,
+    classname: classname
 
   # =================================
   # DocPad Events
