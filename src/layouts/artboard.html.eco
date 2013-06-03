@@ -2,13 +2,13 @@
 <% documents = @getHtmlJsonSortedByFilename() %>
 <% nextDocument = @getAdjacentById(documents, @document.id, 1) %>
 <% prevDocument = @getAdjacentById(documents, @document.id, -1) %>
-<% bodyStyleAttr = if @document.body_style then 'style="' + @document.body_style + '"' else '' %>
+<% htmlStyleAttr = if @document.html_style then 'style="' + @document.html_style + '"' else '' %>
 <% htmlClasses = @document.html_classes %>
 
-<!--[if lt IE 7]>      <html class="<%= @classname('no-js lt-ie9 lt-ie8 lt-ie7', htmlClasses) %>"> <![endif]-->
-<!--[if IE 7]>         <html class="<%= @classname('no-js lt-ie9 lt-ie8', htmlClasses) %>"> <![endif]-->
-<!--[if IE 8]>         <html class="<%= @classname('no-js lt-ie9', htmlClasses) %>"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="<%= @classname('no-js', htmlClasses) %>"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html <%- htmlStyleAttr %> class="<%= @classname('no-js lt-ie9 lt-ie8 lt-ie7', htmlClasses) %>"> <![endif]-->
+<!--[if IE 7]>         <html <%- htmlStyleAttr %> class="<%= @classname('no-js lt-ie9 lt-ie8', htmlClasses) %>"> <![endif]-->
+<!--[if IE 8]>         <html <%- htmlStyleAttr %> class="<%= @classname('no-js lt-ie9', htmlClasses) %>"> <![endif]-->
+<!--[if gt IE 8]><!--> <html <%- htmlStyleAttr %> class="<%= @classname('no-js', htmlClasses) %>"> <!--<![endif]-->
 
 <head>
   <meta charset="utf-8" />
@@ -28,7 +28,7 @@
 
   <%- @getBlock('styles').add(@site.styles).add(@replaceAll(@document.styles, [['@site.url', @site.url]])).toHTML() %>
 </head>
-<body <%- bodyStyleAttr %>>
+<body>
   <%- @content %>
   <% allDocuments = @getHtmlJsonSortedByFilename() %>
   <% offset = ((allDocuments.length * 25) + (49 * 2)) / 2 %>
