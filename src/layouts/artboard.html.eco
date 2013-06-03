@@ -30,7 +30,7 @@
   <%- @content %>
   <% allDocuments = @getHtmlJsonSortedByFilename() %>
   <% offset = ((allDocuments.length * 25) + (49 * 2)) / 2 %>
-  <nav class="artboard-nav">
+  <nav id="artboard-nav" class="artboard-nav">
     <ul class="artboard-paging" style="margin-left: -<%= offset %>px">
     <% if prevDocument: %>
       <li><a class="prev" href="<%= @prependBasePath(prevDocument.url) %>">Prev</a></li>

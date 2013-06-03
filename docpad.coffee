@@ -105,6 +105,7 @@ docpadConfig = {
 
       # The website's scripts
       scripts: [
+        localBasePath + '/assets/artboard.js'
       ]
 
 

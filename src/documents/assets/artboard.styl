@@ -33,11 +33,15 @@
   list-style none
   left 50%
   margin 0
-  opacity 0
+  opacity 1
+  transition opacity 200ms ease-out
   padding 0
   position absolute
 
-.artboard-nav:hover > .artboard-paging
+.js-autohide > .artboard-paging
+  opacity 0
+
+.js-autohide:hover > .artboard-paging
   opacity 1
 
 .artboard-paging > li
