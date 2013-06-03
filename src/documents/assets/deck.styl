@@ -1,18 +1,22 @@
-.slide
+/* Sections
+-----------------------------------------------------------------------------
+
+Vertical stripes you can use for scrolling content
+*/
+
+.section
   /* A default splash of color */
   background #e5e5e5 center center no-repeat
-  /* Any background image on slide should cover it by default. */
-  background-size cover
   /* Add 2px of padding to top and bottom in order to contain margins of
   `.slide > in`. */
   padding 2px 0
   z-index 100
 
-.slide:nth-child(even)
+.section:nth-child(even)
   /* Alternate colors by default. */
   background-color #fff
 
-.slide > .in
+.section > .in
   /* We're approximating a 1280x720 slide. We want the slide to be 720px high at
   minimum. Take into account some top and bottom whitespace, plus the 2px padding
   on `.slide`. */
@@ -20,16 +24,60 @@
   margin (48px - 2px) auto (36px - 2px)  
   position relative
 
-.slide .header
+.section .header
   margin-bottom 12px
 
-.slide .content
+.section .content
   margin-bottom: 12px
 
-.pullquote
-  font-size 24px
-  line-height 32px
-  margin-bottom 12px
+/* Slides
+----------------------------------------------------------------------------- */
+
+.slide-1280x720
+  background #eee center center
+  border-radius 3px
+  height 720px
+  width 1280px
+
+.slide-1280x720.pin-center
+  left 50%
+  margin -360px 0 0 -640px
+  position absolute
+  top 50%
+
+/* Utilities
+----------------------------------------------------------------------------- */
+
+.background-cover
+  /* Any background image on slide should cover it. */
+  background-size cover
+
+/* Absolute positioning helpers
+-----------------------------------------------------------------------------
+
+Pin text to the corner of a slide (or anywhere, really). Best used inside of .in:
+
+    .slide > .in > .pin-tr.unit6
+*/
+.pin-tl
+  left 0
+  position absolute
+  top 0
+
+.pin-tr
+  position absolute
+  right 0
+  top 0
+
+.pin-bl
+  bottom 0
+  left 0
+  position absolute
+
+.pin-br
+  bottom 0
+  position absolute
+  right 0
 
 /* Takahashi-style giant text */
 .p1-takahashi
