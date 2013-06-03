@@ -1,0 +1,10 @@
+---
+layout: 'artboard'
+---
+<% slideStyleAttr = if @document.slide_style then 'style="' + @document.slide_style + '"' else '' %>
+<div <%- slideStyleAttr %> class="<%= @classname('slide-fullscreen slide-takahashi', @document.classes) %>">
+  <div class="in">
+    <h1 class="title"><%= @document.title %></h1>
+    <div class="content unit8"><%- @content %></div>
+  </div>
+</div>
