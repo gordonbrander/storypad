@@ -45,12 +45,24 @@ Vertical stripes you can use for scrolling content
   position absolute
   top 50%
 
+.slide-fullscreen
+  background-color: #999
+  height 100%
+  position relative
+  width 100%
+
 /* Utilities
 ----------------------------------------------------------------------------- */
 
 .background-cover
   /* Any background image on slide should cover it. */
+  background-position center center
   background-size cover
+  background-repeat no-repeat
+
+.background-center
+  background-position center center
+  background-repeat no-repeat
 
 /* Absolute positioning helpers
 -----------------------------------------------------------------------------

@@ -2,6 +2,6 @@
 layout: 'artboard'
 ---
 <% slideStyleAttr = if @document.slide_style then 'style="' + @document.slide_style + '"' else '' %>
-<div <%- slideStyleAttr %> class="slide-1280x720 pin-center">
+<div <%- slideStyleAttr %> class="<%= @classname('slide-fullscreen', @document.classes) %>">
   <%- @content %>
 </div>
