@@ -42,29 +42,39 @@
 /* Annotation
 ----------------------------------------------------------------------------- */
 
-.annotation > .mark
-  background #ffff55
-  border-radius 18px
-  box-shadow 1px 1px 3px rgba(0, 0, 0, .3)
-  color #000
-  font-weight bold
-  font-size 17px
-  height 36px
-  line-height 36px
-  min-width 16px
-  padding 0 10px
+.annotation
+  height 28px
   position absolute
-  text-align center
+  width 28px
+
+.annotation:before
+  content ''
+  background #e74c3c
+  border 2px solid #fff
+  border-radius 14px
+  box-shadow 1px 1px 3px rgba(0, 0, 0, .3)
+  height 24px
+  width 24px
+  position absolute
+  z-index 99
 
 .annotation > .content
-  background #ffff55
+  background #34495e
+  color #fff
+  font-size 12px
   border-radius 3px
   box-shadow 1px 1px 3px rgba(0, 0, 0, .3)
+  left -32000px
   opacity 0
   transition opacity 200ms linear
-  padding 12px 20px
+  padding 18px 20px
   position absolute
+  top 14px
   width 260px
 
 .annotation:hover > .content
   opacity 1
+  left 14px
+
+.annotation > .content > p:last-child
+  margin-bottom 0
