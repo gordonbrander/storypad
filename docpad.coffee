@@ -6,6 +6,9 @@ path = require('path')
 productionBasePath = "/~gbrander/2013-06-future-themes";
 localBasePath = '';
 
+escapeRegExp = (str) ->
+  str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&")
+
 prependBasePath = (fragment) ->
   """Method eventually attached to templateData object."""
   return path.join(@site.url, fragment)
@@ -71,6 +74,16 @@ getAdjacentById = (array, id, offset = 1) ->
 getHtmlJsonSortedByFilename = () ->
   isntIndex = negatedSearcher('url', 'index.html')
   @getCollection('html').toJSON().filter(isntIndex).sort(compareByFilename)
+
+isntUrlIndex = negatedSearcher('url', 'index.html')
+isUrlIndex = searcher('url', 'index.html')
+
+getDocumentSiblingsSortedByFilenameIndexFirst = (document) ->
+  dirRegex = escapeRegExp(path.dirname(document.url) or '')
+  json = @getCollection('html').toJSON().filter(searcher('url', dirRegex))
+  indexes = json.filter(isUrlIndex)
+  sortedPages = json.filter(isntUrlIndex).sort(compareByFilename)
+  indexes.concat(sortedPages)
 
 classname = (classnamestrings...) ->
   classesReducer = (accumulated, classname) ->
@@ -154,6 +167,7 @@ docpadConfig = {
     negatedSearcher: negatedSearcher
     replaceAll: replaceAll
     getHtmlJsonSortedByFilename: getHtmlJsonSortedByFilename
+    getDocumentSiblingsSortedByFilenameIndexFirst: getDocumentSiblingsSortedByFilenameIndexFirst
     getAdjacentById: getAdjacentById,
     classname: classname
 
