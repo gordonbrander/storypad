@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<% documents = @getHtmlJsonSortedByFilename() %>
+<% documents = @getDocumentSiblingsSortedByFilenameIndexFirst(@document) %>
 <% nextDocument = @getAdjacentById(documents, @document.id, 1) %>
 <% prevDocument = @getAdjacentById(documents, @document.id, -1) %>
 <% htmlStyleAttr = if @document.html_style then 'style="' + @document.html_style + '"' else '' %>
@@ -30,16 +30,15 @@
 </head>
 <body>
   <%- @content %>
-  <% allDocuments = @getHtmlJsonSortedByFilename() %>
-  <% offset = ((allDocuments.length * 25) + (49 * 2)) / 2 %>
+  <% offset = ((documents.length * 25) + (49 * 2)) / 2 %>
   <nav id="artboard-nav" class="artboard-nav">
     <ul class="artboard-paging" style="margin-left: -<%= offset %>px">
     <% if prevDocument: %>
       <li><a class="prev" href="<%= @prependBasePath(prevDocument.url) %>">Prev</a></li>
     <% else: %>
-      <li><span class="prev" %>">Prev</span></li>
+      <li><span class="prev">Prev</span></li>
     <% end %>
-    <% for document in allDocuments: %>
+    <% for document in documents: %>
       <% if (@document.id == document.id): %>
         <li><a class="page activated" href="<%= @prependBasePath(document.url) %>"><span><%= document.title %></span></a></li>
       <% else: %>
