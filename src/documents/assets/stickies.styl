@@ -20,13 +20,16 @@
   transform: rotate(-2deg);
 }
 
-.sticky.pink
+.sticky.pink,
+.annotation.pink > .content
   background #f75271
 
-.sticky.green
+.sticky.green,
+.annotation.green > .content
   background #a5e056
 
-.sticky.blue
+.sticky.blue,
+.annotation.blue > .content
   background #52d7ec
 
 .sticky:hover
@@ -34,3 +37,34 @@
 
 .sticky > .content
   margin-bottom 12px
+
+
+/* Annotation
+----------------------------------------------------------------------------- */
+
+.annotation > .mark
+  background #ffff55
+  border-radius 18px
+  box-shadow 1px 1px 3px rgba(0, 0, 0, .3)
+  color #000
+  font-weight bold
+  font-size 17px
+  height 36px
+  line-height 36px
+  min-width 16px
+  padding 0 10px
+  position absolute
+  text-align center
+
+.annotation > .content
+  background #ffff55
+  border-radius 3px
+  box-shadow 1px 1px 3px rgba(0, 0, 0, .3)
+  opacity 0
+  transition opacity 200ms linear
+  padding 12px 20px
+  position absolute
+  width 260px
+
+.annotation:hover > .content
+  opacity 1
