@@ -71,10 +71,6 @@ getAdjacentById = (array, id, offset = 1) ->
   object = getById(array, id)
   getAdjacent(array, object, offset)
 
-getHtmlJsonSortedByFilename = () ->
-  isntIndex = negatedSearcher('url', 'index.html')
-  @getCollection('html').toJSON().filter(isntIndex).sort(compareByFilename)
-
 isntUrlIndex = negatedSearcher('url', 'index.html')
 isUrlIndex = searcher('url', 'index.html')
 
@@ -166,7 +162,6 @@ docpadConfig = {
     searcher: searcher
     negatedSearcher: negatedSearcher
     replaceAll: replaceAll
-    getHtmlJsonSortedByFilename: getHtmlJsonSortedByFilename
     getDocumentSiblingsSortedByFilenameIndexFirst: getDocumentSiblingsSortedByFilenameIndexFirst
     getAdjacentById: getAdjacentById,
     classname: classname
