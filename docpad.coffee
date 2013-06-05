@@ -39,6 +39,13 @@ replaceAll = (strings, replacements) ->
   replacements = asArray(replacements)
   strings.map((string) -> replacements.reduce(replaceStringViaPair, string))
 
+replaceAllTokens = (strings) ->
+  tokens = [
+    ['@site.url', @site.url]
+    ['<site_url>', @site.url]
+  ]
+  replaceAll(strings, tokens)
+
 searcher = (property, matching) ->
   """Create a property matching function for `filter`."""
   (object) ->
@@ -170,6 +177,7 @@ docpadConfig = {
     searcher: searcher
     negatedSearcher: negatedSearcher
     replaceAll: replaceAll
+    replaceAllTokens: replaceAllTokens
     getDocumentSiblingsSortedByFilenameIndexFirst: getDocumentSiblingsSortedByFilenameIndexFirst
     getAdjacentById: getAdjacentById,
     classname: classname
