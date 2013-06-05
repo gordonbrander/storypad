@@ -30,7 +30,7 @@
 </head>
 <body>
   <%- @content %>
-  <% offset = ((documents.length * 25) + (49 * 2)) / 2 %>
+  <% offset = ((documents.length * 13) + (49 * 2)) / 2 %>
   <nav id="artboard-nav" class="artboard-nav">
     <ul class="artboard-paging" style="margin-left: -<%= offset %>px">
     <% if prevDocument: %>
