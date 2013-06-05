@@ -26,7 +26,7 @@
     <link rel="prefetch" href="<%= @prependBasePath(nextDocument.url) %>">
   <% end %>
 
-  <%- @getBlock('styles').add(@site.styles).add(@replaceAllTokens(@document.styles).toHTML() %>
+  <%- @getBlock('styles').add(@site.styles).add(@replaceAllTokens(@document.styles)).toHTML() %>
 </head>
 <body>
   <%- @content %>
