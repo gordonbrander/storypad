@@ -14,10 +14,10 @@
 
   <%- @getBlock('meta').toHTML() %>
 
-  <%- @getBlock('styles').add(@site.styles).add(@replaceAll(@document.styles, [['@site.url', @site.url]])).toHTML() %>
+  <%- @getBlock('styles').add(@site.styles).add(@replaceAllTokens(@document.styles)).toHTML() %>
 </head>
 <body>
   <%- @content %>
-  <%- @getBlock('scripts').add(@site.scripts).add(@replaceAll(@document.scripts, [['@site.url', @site.url]])).toHTML() %>
+  <%- @getBlock('scripts').add(@site.scripts).add(@replaceAllTokens(@document.scripts)).toHTML() %>
 </body>
 </html>
