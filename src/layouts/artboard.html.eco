@@ -30,6 +30,9 @@
 </head>
 <body>
   <%- @content %>
+  <% if @document.credit: %>
+    <a href="<%= @document.credit.url %>" class="credit"><%= @document.credit.text %></a>
+  <% end %>
   <% offset = ((documents.length * 13) + (49 * 2)) / 2 %>
   <nav id="artboard-nav" class="artboard-nav">
     <ul class="artboard-paging" style="margin-left: -<%= offset %>px">
