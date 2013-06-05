@@ -6,6 +6,8 @@ path = require('path')
 productionBasePath = "/~gbrander/2013-06-future-themes";
 localBasePath = '';
 
+identity = (thing) -> thing
+
 escapeRegExp = (str) ->
   str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&")
 
@@ -47,6 +49,12 @@ negatedSearcher = (property, matching) ->
   (object) ->
     not s(object)
 
+matcher = (value, mapper) ->
+  mapper = mapper or identity
+  (thing) ->
+    thing = mapper(thing)
+    thing is value
+
 compareByFilename = (a, b) ->
   """See https://github.com/bevry/docpad/blob/master/src/lib/models/file.coffee
   < and > can be used for alphanumeric sorting strings in JavaScript?!?!
@@ -75,8 +83,8 @@ isntUrlIndex = negatedSearcher('url', 'index.html')
 isUrlIndex = searcher('url', 'index.html')
 
 getDocumentSiblingsSortedByFilenameIndexFirst = (document) ->
-  dirRegex = escapeRegExp(path.dirname(document.url) or '')
-  json = @getCollection('html').toJSON().filter(searcher('url', dirRegex))
+  matchSiblingByUrl = matcher(path.dirname(document.url), (document) -> path.dirname(document.url))
+  json = @getCollection('html').toJSON().filter(matchSiblingByUrl)
   indexes = json.filter(isUrlIndex)
   sortedPages = json.filter(isntUrlIndex).sort(compareByFilename)
   indexes.concat(sortedPages)
