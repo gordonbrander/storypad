@@ -9,7 +9,7 @@ layout: 'slide'
     left: 50%;
     top: 50%;
     position: absolute;">
-    <img src="<%- @document.img.src %>"
+    <img src="<%- @replaceAllTokens(@document.img.src) %>"
          alt=""
          width="<%= @document.img.width %>"
          height="<%= @document.img.height %>" />
