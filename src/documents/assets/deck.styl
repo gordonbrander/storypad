@@ -33,6 +33,11 @@ Vertical stripes you can use for scrolling content
 /* Slides
 ----------------------------------------------------------------------------- */
 
+.slide
+  min-height 100%
+  position relative
+  width 100%
+
 .slide-1280x720
   background #eee center center
   border-radius 3px
@@ -47,19 +52,9 @@ Vertical stripes you can use for scrolling content
 
 .slide-fullscreen
   background #333 url(artboard.png) center center repeat
-  height 100%
+  min-height 100%
   position relative
   width 100%
-
-.slide-caption-t
-  background #2e3641
-  color #fff
-  font-size 16px
-  left 0
-  padding 24px 0 24px
-  position absolute
-  right 0
-  top 24px
 
 .slide-takahashi
   background #eee
@@ -84,6 +79,23 @@ Vertical stripes you can use for scrolling content
 
 .slide-takahashi > .in > .content > p
   margin-bottom 24px
+
+.slide-text
+  background #eee
+  color #656565
+
+.slide-text > .in
+  padding 120px 0
+
+.slide-text .title
+  font-size 72px
+  font-weight bold
+  line-height 84px
+  margin-bottom 48px
+
+.slide-text .content
+  font-size 24px
+  line-height 36px
 
 /* Utilities
 ----------------------------------------------------------------------------- */
