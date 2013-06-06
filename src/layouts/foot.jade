@@ -1,0 +1,4 @@
+- var scripts = getBlock('scripts')
+- scripts.add(site.scripts)
+- scripts.add(replaceAllTokens(document.scripts))
+!= scripts.toHTML()

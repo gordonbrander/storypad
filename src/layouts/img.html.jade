@@ -1,0 +1,12 @@
+extends slide.html
+
+block content
+  - var width = document.img.width
+  - var height = document.img.height
+
+  if document.img
+    .img-wrapper(style="position:absolute; left:50%; top:50%; width:" + width + 'px; height:' + height + 'px; margin: -' +  height/2 + 'px 0 0 -' + width/2 + 'px;')
+      img(src=replaceAllTokens(document.img.src), width=width, height=height)
+      != content
+  else
+    != content

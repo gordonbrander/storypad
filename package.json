@@ -15,7 +15,7 @@
     "docpad-plugin-marked": "2.x",
     "docpad-plugin-partials": "2.x",
     "docpad-plugin-stylus": "~2.3.0",
-    "docpad-plugin-text": "2.x",
+    "docpad-plugin-text": "~2.2.3",
     "docpad-plugin-ghpages": "~2.0.2",
     "docpad-plugin-jade": "~2.3.1"
   },

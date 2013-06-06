@@ -1,0 +1,10 @@
+doctype 5
+html(style=document.html_style, class=document.html_classes)
+  head
+    include head
+    include next-link
+  body
+    != content
+
+    include artboard-nav
+    include foot

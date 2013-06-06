@@ -1,0 +1,15 @@
+doctype 5
+- var classes = classname(document.classes, 'slide slide-takahashi')
+- var htmlStyle = [document.html_style, document.slide_style].join(' ')
+html(style=htmlStyle, class=classes)
+  head
+    include head
+    include next-link
+  body
+    .in.slide-takahashi-in
+      h1.title
+        span= document.title
+      != content
+
+    include artboard-nav
+    include foot

@@ -1,0 +1,4 @@
+- var siblings = getDocumentSiblingsSortedByFilenameIndexFirst(document)
+- var nextDocument = getAdjacentById(siblings, document.id, 1)
+if nextDocument
+  link(rel="next", href= prependBasePath(nextDocument.url))

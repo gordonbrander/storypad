@@ -1,0 +1,30 @@
+if document.credit
+  a.credit(href=document.credit.url)= document.credit.text
+
+- var siblings = getDocumentSiblingsSortedByFilenameIndexFirst(document)
+- var nextDocument = getAdjacentById(siblings, document.id, 1)
+- var prevDocument = getAdjacentById(siblings, document.id, -1)
+- var offset = ((siblings.length * 13) + (49 * 2)) / 2
+
+nav#artboard-nav.artboard-nav
+  ul.artboard-paging(style="margin-left:-" + offset + "px")
+    li
+      if prevDocument
+        a.prev(href=prependBasePath(prevDocument.url)) Prev
+      else
+        .prev Prev
+
+    each sibling in siblings
+      li
+        if sibling.id == document.id
+          a.page.activated(href=prependBasePath(sibling.url))
+            span= sibling.title
+        else
+          a.page(href=prependBasePath(sibling.url))
+            span= sibling.title
+
+    li
+      if nextDocument
+        a.next(href=prependBasePath(nextDocument.url)) Next
+      else
+        .next Next

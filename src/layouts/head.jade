@@ -1,0 +1,8 @@
+- var styles = getBlock('styles')
+- styles.add(site.styles)
+- styles.add(replaceAllTokens(document.styles))
+title= getPreparedTitle()
+meta(name="description", content=getPreparedDescription())
+meta(name="keywords", content=getPreparedKeywords())
+!= getBlock('meta').toHTML()
+!= styles.toHTML()
